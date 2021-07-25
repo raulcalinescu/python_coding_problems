@@ -24,7 +24,7 @@ def remove_vowels_keep_order(string):
     return result
 
 # Driver code
-my_string = "iloveyou"
+my_string = "momom"
 print(remove_vowels_keep_order(my_string))
 
 
