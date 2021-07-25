@@ -61,4 +61,3 @@ reversed_list.list_print()
 #
 # Static method knows nothing about the class and just deals with the parameters.
 # Class method works with the class since its parameter is always the class itself.
-
