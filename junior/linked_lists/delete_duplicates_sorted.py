@@ -22,7 +22,7 @@ class Solution:
     @staticmethod
     def delete_duplicates(head: ListNode) -> ListNode:
         node = head
-        while node and node.next:   # using is not None is more space efficient - singleton
+        while node and node.next:   # 'is not None' is more space efficient - singleton, just one copy of the object
             if node.val == node.next.val:
                 node.next = node.next.next
                 continue
@@ -42,5 +42,5 @@ list.head = ListNode(1)
 #n3.next = n4
 
 list.list_print()
-Solution.delete_duplicates(list.head.next)
+Solution.delete_duplicates(list.head.next)  # test corner case for passing None
 list.list_print()
