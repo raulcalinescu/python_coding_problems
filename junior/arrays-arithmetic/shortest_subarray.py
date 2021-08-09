@@ -6,10 +6,11 @@ from typing import List
 
 
 # [2, 1, 2, 0, 3, 3]  so shortest same degree subarray is [3, 3]. [2, 1, 2] has same degree but longer len
+
 class Solution:
     @staticmethod
     def find_shortest_array(nums : List[int]) -> int:
-        left, right, count = {}, {}, {}
+        left, right, count = {}, {}, {}  # these are dictionaries
         for i, x in enumerate(nums):
             if x not in left: left[x] = i
             right[x] = i
