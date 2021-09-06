@@ -21,7 +21,7 @@ class Solution:
         return no_duplicate_list.pop()
 
     # HashTable approach
-    def rem_single_element(nums: List[int]) -> int:
+    def rem_single_element(self, nums: List[int]) -> int:
         hash_table = defaultdict(int)
         for i in nums:
             hash_table[i] += 1
