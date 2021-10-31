@@ -23,7 +23,8 @@ import sys
 
 
 class Solution(object):
-    @staticmethod # O(n), O(n)
+    @staticmethod
+    # O(n), O(n)
     def majority_element_mysol(nums: List[int]) -> int:
         # max = -sys.maxsize or float('-inf')
         max = 0
@@ -58,6 +59,26 @@ class Solution(object):
             if count > majority_count:
                 return num
 
+    def majority_element_recursive(self, nums: List[int]) -> int:
+        def maj_elem_rec(lo, hi):
+            # base case: the only element in an array of size 1 is the majority element
+            if lo == hi:
+                return nums[lo]
+
+            # recurse on left and right halves of the slice
+            mid = (hi - lo) // 2 + lo
+            left = maj_elem_rec(lo, mid)
+            right = maj_elem_rec(mid+1, hi)
+
+            # if the two halves agree on the majority element, return it
+            if left == right:
+                return left
+
+            # otherwise count each element and return the winner
+            left_count = sum(1 for i in range(lo, hi + 1) if nums[i] == left)
+            right_count = sum(1 for i in range(lo, hi + 1) if nums[i] == right)
+            return left if left_count > right_count else right
+        return maj_elem_rec(0, len(nums) - 1)
 
 # Driver code
 nums = [-2, 1, 2, 0, 1, 1]
