@@ -28,3 +28,19 @@ my_string = "momom"
 print(remove_vowels_keep_order(my_string))
 
 
+def remove_vowels(string):
+    """
+    :param string: str
+    :return: str
+    """
+    char_list = []
+    final_list = []
+    result = " "
+    char_list[:0] = string
+    for char in char_list:
+        if char in "aeiou":
+            continue
+        final_list.append(char)
+    result = ''.join(final_list)
+    return result
+
