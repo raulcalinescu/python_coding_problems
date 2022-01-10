@@ -15,8 +15,21 @@
 
 # Note: you also usually want to initialize your objects. For that, you place an __init__ method in your class.
 
-def happy_number(self, n: int) -> bool:
-    return True
+# Time limit exceeded for this solution
+
+def happy_number(n):
+    first_sum = add_square_digits(n)
+    if first_sum == 1:
+        return True
+    temp_sum = 0
+    while temp_sum != first_sum:
+        if temp_sum == 1:
+            return True
+        if temp_sum == 0:
+            temp_sum = add_square_digits(first_sum)
+        else:
+            temp_sum = add_square_digits(temp_sum)
+    return False
 
 
 def add_square_digits(num):
@@ -26,5 +39,5 @@ def add_square_digits(num):
 
 
 # Driver code
-n = 123
-print(add_square_digits(n))
+number = 19
+print(happy_number(number))
