@@ -15,14 +15,17 @@
 
 # Note: you also usually want to initialize your objects. For that, you place an __init__ method in your class.
 
-# Time limit exceeded for this solution
+# Slow - 88 ms, only faster than 5%
 
 def happy_number(n):
     first_sum = add_square_digits(n)
     if first_sum == 1:
         return True
     temp_sum = 0
-    while temp_sum != first_sum:
+    seen = set()
+    seen.add(first_sum)
+    while temp_sum not in seen:
+        seen.add(temp_sum)
         if temp_sum == 1:
             return True
         if temp_sum == 0:
@@ -39,5 +42,5 @@ def add_square_digits(num):
 
 
 # Driver code
-number = 19
+number = 116
 print(happy_number(number))
