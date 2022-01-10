@@ -15,8 +15,29 @@
 
 # Note: you also usually want to initialize your objects. For that, you place an __init__ method in your class.
 
-# Slow - 88 ms, only faster than 5%
+# The reason we use a HashSet and not a Vector, List, or Array is because we're repeatedly checking whether or
+# not numbers are in it. Checking if a number is in a HashSet takes O(1) time,
+# whereas for the other data structures it takes O(n) time.
+# Choosing the correct data structures is an essential part of solving these problems.
 
+# LC's HashSet solution - 48 ms:
+class Solution(object):
+    @staticmethod
+    def is_happy(self, n: int) -> bool:
+        def get_next(num, sum=0):
+            while num > 0:
+                sum += (num % 10) ** 2
+                num //= 10
+            return sum
+
+        seen = set()  # looking in a set takes O(1)
+        while n != 1 and n not in seen:
+            seen.add(n)
+            n = get_next(n)
+        return n == 1
+
+
+# My Solution - Slow - 88 ms, only faster than 5%
 def happy_number(n):
     first_sum = add_square_digits(n)
     if first_sum == 1:
@@ -42,5 +63,8 @@ def add_square_digits(num):
 
 
 # Driver code
-number = 116
+number = 19
+result = Solution()
+
+print(result.is_happy(None, number))
 print(happy_number(number))
