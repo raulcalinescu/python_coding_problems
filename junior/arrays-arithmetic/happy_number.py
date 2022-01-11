@@ -37,6 +37,23 @@ class Solution(object):
         return n == 1
 
 
+# Floyd's Cycle-Finding Algorithm - slow and fast runner pointers
+# https://leetcode.com/problems/happy-number/solution/
+class Solution2(object):
+    @staticmethod
+    def is_happy2(self, n: int) -> bool:
+        def get_next(num, sum=0):
+            while num > 0:
+                sum += (num % 10) ** 2
+                num //= 10
+            return sum
+        slow = n
+        fast = get_next(n)
+        while fast != 1 and fast != slow:
+            slow = get_next(slow)
+            fast = get_next(get_next(fast))
+        return fast == 1
+
 # My Solution - Slow - 88 ms, only faster than 5%
 def happy_number(n):
     first_sum = add_square_digits(n)
