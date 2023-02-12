@@ -15,6 +15,11 @@ def reverse(string):  # reversed () returns the reversed iterator of the given s
     return string
 
 
+# with reversing it is possible to write in one line
+# '[::]' this means print all, and this '[::-1]' reverses, it is mostly used with list in python
+def is_palindrome2(self, x: int) -> bool:
+    return str(x) == str(x)[::-1]
+
 # Driver Code
 n = -12321
 print(is_palindrome(n))
